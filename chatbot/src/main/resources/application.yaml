@@ -6,7 +6,8 @@ spring:
       chat:
         options:
           model: llama3.2
-      base-url: http://localhost:11434
+      #base-url: http://localhost:11434 # url when running on local machine
+      base-url: http://host.docker.internal:11434 #ollam url when running on docker
 
 logging:
   level:

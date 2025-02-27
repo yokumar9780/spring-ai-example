@@ -90,3 +90,15 @@ This project currently demonstrates several AI use cases using the Spring AI fra
 3. [AI-based Chatbots](chatbot): Using LLMs to build conversational agents.
 4. Predictive Analytics: Data-driven insights and predictions using AI models.
 5. Real-time AI: Real-time processing using AI models for instant predictions and feedback.
+
+
+## Configure Open WebUI
+
+Follow these steps to connect the LLM model to Open WebUI:
+
+1. Open WebUI by navigating to http://localhost:4512/ 
+2. Click on the right-side menu (your profile alias) and select Admin Panel. 
+3. In the Admin Panel, go to Settings → Connections, update the **Manage Ollama API Connections URL** to:
+http://host.docker.internal:11434 ( if LLM model are running in docker)
+4. 
+This ensures the LLM model is properly connected to Open WebUI.
