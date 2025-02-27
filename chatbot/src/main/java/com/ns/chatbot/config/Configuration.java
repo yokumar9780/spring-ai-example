@@ -19,6 +19,14 @@ public class Configuration {
                 .build();
         return chatClientBuilder.build();
     }
+    @Bean
+    public ChatClient chatClientWithoutInMemory(ChatClient.Builder chatClientBuilder) {
+        chatClientBuilder
+                .defaultAdvisors(
+                        new SimpleLoggerAdvisor())
+                .build();
+        return chatClientBuilder.build();
+    }
 
     @Bean
     InMemoryChatMemory inMemoryChatMemory() {

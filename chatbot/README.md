@@ -47,4 +47,8 @@ curl --location 'http://localhost:8081/text?topic=whythe%20sky%20is%20blue%3F'
 curl --location 'http://localhost:8081/text?topic=How%20many%20days%20are%20there%20in%20each%20month%3F'
 ```
 
+#### search for topic 'What's the weather like in india?'
+```bash
+curl --location 'http://localhost:8081/weather?message=What%27s%20the%20weather%20like%20in%20India%3F'
+```
 
