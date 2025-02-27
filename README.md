@@ -67,7 +67,7 @@ The application's configuration files are located in src/main/resources/applicat
 settings in this file to adjust which LLM model is being used, set API keys for cloud services, or change other
 properties.
 
-Example configuration for Ollama (to be added under application.properties):
+Example configuration for Ollama (to be added under application.yaml):
 
 ```yaml
 spring:
