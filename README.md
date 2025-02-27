@@ -69,10 +69,14 @@ properties.
 
 Example configuration for Ollama (to be added under application.properties):
 
-```properties
-llm.provider=ollama
-ollama.api.url=http://localhost:5000
-ollama.model.name=llama2
+```yaml
+spring:
+  ai:
+    ollama:
+      chat:
+        options:
+          model: llama3.2
+      base-url: http://localhost:11434
 ```
 
 You can add additional configuration blocks for other LLM providers as needed (e.g., OpenAI etc...).
