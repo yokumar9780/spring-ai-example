@@ -1,0 +1,36 @@
+<configuration>
+
+    <!-- Define the log file path and name -->
+    <!-- Load properties from application.properties -->
+    <springProperty scope="context" name="LOG_PATH" source="logging.file.path" defaultValue="."/>
+    <springProperty scope="context" name="LOG_FILE" source="logging.file.name" defaultValue="spring-ai-workshop.log"/>
+    <springProperty scope="context" name="AppName" source="spring.application.name" defaultValue="spring-ai-workshop"/>
+    <!-- Define the pattern for log messages -->
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n [${AppName},%X{traceId},%X{spanId}]"/>
+
+
+    <!-- File appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/spring-ai-workshop-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+        <!--  <appender-ref ref="LOKI"/>-->
+    </root>
+</configuration>

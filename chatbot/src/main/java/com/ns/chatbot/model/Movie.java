@@ -1,4 +1,4 @@
-package com.ns.chatbot.fakedatagenator.model;
+package com.ns.chatbot.model;
 
 import lombok.Builder;
 

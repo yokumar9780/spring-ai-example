@@ -1,64 +1,62 @@
 package com.ns.chatbot.controller;
 
+import com.ns.chatbot.model.Location;
+import com.ns.chatbot.model.WeatherResponseDto;
+import com.ns.chatbot.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.tool.annotation.Tool;
-import org.springframework.ai.tool.annotation.ToolParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
 public class WeatherController {
     private final ChatClient chatClientWithoutInMemory;
+    private final WeatherService weatherService;
 
     @GetMapping("/weather")
-    ChatResponse getResponse(@RequestParam(defaultValue = "What's the weather like in Boston?") String message) {
-        log.info("PROMPT TO LLM ==> {}", message);
+    ChatResponse getWeatherByCountry(@RequestParam(defaultValue = "What's the weather like in Boston?") String message) {
         return getChatResponse(message);
+    }
+
+    @PostMapping("/weather")
+    WeatherResponseDto getWeatherByLocationUsingOpenWeatherProxy(@RequestBody @Valid Location location) {
+        return getChatResponseForLocation(location);
 
     }
 
-    /**
-     * Retrieves a chat response using the provided message and invokes the weather tool to fetch the weather.
-     *
-     * @param message the message to prompt the AI model with.
-     * @return a {@link ChatResponse} containing the AI's response.
-     */
     private ChatResponse getChatResponse(String message) {
-        // Triggering the weather service tool from the AI model and logging the response.
         return chatClientWithoutInMemory.prompt(message)
-                .tools(new WeatherService())  // Reference to the weather instance for tools (this makes sure we are using the WeatherService as the tool)
+                .tools(weatherService)  // Reference to the weather instance for tools (this makes sure we are using the WeatherService as the tool)
                 .call()
                 .chatResponse();
 
     }
-}
 
-/**
- * WeatherService interacts with the chat client and integrates the weather functionality into a conversational
- * AI flow. It uses an external tool to provide weather information based on location.
- */
-@RequiredArgsConstructor
-@Slf4j
-class WeatherService {
+    private WeatherResponseDto getChatResponseForLocation(Location location) {
+        PromptTemplate promptTemplate = new PromptTemplate("""
+                What's the weather like at location {latitude} and {longitude}?
+                Please respond with all the possible details, and based on the weather details,
+                please provide a suitable outfit and places to visit.
+                Please provide all the output in json format
+                """);
+        promptTemplate.add("latitude", location.latitude());
+        promptTemplate.add("longitude", location.longitude());
+        String message = promptTemplate.create().getContents();
+        log.info("PROMPT TO LLM ==> {}", message);
+        // Triggering the weather service tool from the AI model and logging the response.
+        return chatClientWithoutInMemory.prompt(message)
+                .tools(weatherService)  // Reference to the weather instance for tools (this makes sure we are using the WeatherService as the tool)
+                .call()
+                .entity(new ParameterizedTypeReference<WeatherResponseDto>() {
+                });
 
-    /**
-     * A tool method that fetches weather information based on the provided location.
-     *
-     * @param location the name of the city or state to get the weather for.
-     * @return a string representation of the weather (e.g., temperature).
-     */
-    @Tool(description = "Fetches the weather for a given location")
-    public String weatherByLocation(@ToolParam(description = "City or state name") String location) {
-        log.info("Requesting weather information for location: {}", location);
-        // Here, we'd normally call an external API to get the weather for the location.
-        // For now, returning a hardcoded response.
-        return "43°C";  // Example hardcoded response for demonstration purposes.
     }
 }
 

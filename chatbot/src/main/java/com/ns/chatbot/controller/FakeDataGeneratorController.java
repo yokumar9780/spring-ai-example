@@ -1,7 +1,7 @@
 package com.ns.chatbot.controller;
 
-import com.ns.chatbot.fakedatagenator.model.Movie;
-import com.ns.chatbot.fakedatagenator.model.Person;
+import com.ns.chatbot.model.Movie;
+import com.ns.chatbot.model.Person;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;

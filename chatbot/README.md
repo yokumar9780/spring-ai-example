@@ -48,7 +48,19 @@ curl --location 'http://localhost:8081/text?topic=How%20many%20days%20are%20ther
 ```
 
 #### search for topic 'What's the weather like in india?'
+
 ```bash
 curl --location 'http://localhost:8081/weather?message=What%27s%20the%20weather%20like%20in%20India%3F'
 ```
 
+#### search for topic 'What's the weather like in india?'
+
+```bash
+curl --location 'http://localhost:8081/weather' \
+--header 'Content-Type: application/json' \
+--data '{
+    "latitude": 57.704839266417736,
+    "longitude": 11.916077867119549
+}
+'
+```
