@@ -1,0 +1,62 @@
+# Spring AI Workshop - Implemented Use Cases
+
+## 1. Conversational AI with Spring AI
+- Integration with Ollama LLM models
+- Support for alternative AI providers (OpenAI)
+- Configurable prompt templates
+- In-memory chat history for context retention
+- Customizable model parameters
+
+## 2. Weather Information Service
+- Integration with OpenWeather API
+- City-based weather lookup
+- Weather condition analysis
+- Caching of weather data for performance
+- Resilient API calls with retry and circuit breaker patterns
+
+## 3. Resilience Patterns
+- Retry mechanism with exponential backoff
+- Circuit breaker for fault tolerance
+- Rate limiting to prevent API abuse
+- Comprehensive error handling with custom exceptions
+
+## 4. Monitoring and Observability
+- Health indicators for system status
+- Metrics collection for performance monitoring
+- Cache statistics for optimization
+- Prometheus integration for metrics visualization
+- Detailed logging for troubleshooting
+
+## 5. Configuration Management
+- Externalized configuration with Spring properties
+- Environment-specific settings
+- Validated configuration properties
+- Conditional bean creation based on configuration
+
+## 6. Security Features
+- SSL configuration for secure communication
+- Basic authentication options
+- Configurable security settings
+
+## 7. Internationalization Support
+- Multi-language support for gender options
+- Extensible i18n framework for adding more languages
+- Message keys for localization
+
+## 8. RESTful API Design
+- Well-structured API endpoints
+- Consistent error responses
+- Global exception handling
+- Proper HTTP status codes
+
+## 9. Performance Optimization
+- Efficient caching with Caffeine
+- Configurable cache TTL and size
+- Metrics for cache performance monitoring
+- Compression for reduced network traffic
+
+## 10. Developer Experience
+- Comprehensive documentation
+- Type-safe configuration
+- Clear separation of concerns
+- Consistent coding patterns 

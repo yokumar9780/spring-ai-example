@@ -1,6 +1,5 @@
 package com.ns.chatbot.config.proxy;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
@@ -15,12 +14,33 @@ import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
 import java.net.Proxy;
 
+/**
+ * Configuration for system-wide HTTP proxy settings.
+ * <p>
+ * This class:
+ * <ul>
+ *   <li>Sets system properties for HTTP and HTTPS proxies</li>
+ *   <li>Configures a RestTemplate that uses the proxy</li>
+ *   <li>Sets up proxy authentication if credentials are provided</li>
+ * </ul>
+ * <p>
+ * This configuration is only active in the "dev" profile.
+ *
+ * @author Spring AI Workshop Team
+ * @version 1.0
+ */
 @Configuration
 @RequiredArgsConstructor
 @Profile("dev")
 public class SystemProxyConfig implements InitializingBean {
+    /**
+     * The proxy settings from application properties.
+     */
     private final ProxySettings proxy;
 
+    /**
+     * Sets system properties for HTTP and HTTPS proxies after bean initialization.
+     */
     @Override
     public void afterPropertiesSet() {
         System.setProperty("http.proxyHost", proxy.host());
@@ -30,7 +50,14 @@ public class SystemProxyConfig implements InitializingBean {
         System.setProperty("https.proxyPort", Integer.toString(proxy.port()));
     }
 
-
+    /**
+     * Creates a RestTemplate configured to use the proxy.
+     * <p>
+     * This bean is marked as @Primary to override any other RestTemplate
+     * beans when in the dev profile.
+     *
+     * @return A RestTemplate that routes requests through the configured proxy
+     */
     @Bean
     @Primary
     public RestTemplate restTemplate() {
@@ -50,6 +77,4 @@ public class SystemProxyConfig implements InitializingBean {
 
         return new RestTemplate(requestFactory);
     }
-
-
 }

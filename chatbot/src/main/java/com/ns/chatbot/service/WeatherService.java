@@ -1,6 +1,5 @@
 package com.ns.chatbot.service;
 
-
 import com.ns.chatbot.proxy.OpenWeatherProxyClient;
 import com.ns.chatbot.proxy.OpenWeatherRequest;
 import com.ns.chatbot.proxy.OpenWeatherResponse;
@@ -11,20 +10,38 @@ import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Service;
 
 /**
- * WeatherService interacts with the chat client and integrates the weather functionality into a conversational
- * AI flow. It uses an external tool to provide weather information based on location.
+ * WeatherService integrates weather functionality into conversational AI flows.
+ * <p>
+ * This service:
+ * <ul>
+ *   <li>Exposes weather information as AI tools using Spring AI annotations</li>
+ *   <li>Provides methods for retrieving weather by location name or coordinates</li>
+ *   <li>Integrates with the OpenWeatherProxyClient for actual data retrieval</li>
+ * </ul>
+ * <p>
+ * The @Tool annotations make these methods available to AI models for function calling,
+ * allowing the AI to request weather information during conversations.
+ *
+ * @author Spring AI Workshop Team
+ * @version 1.0
  */
 @RequiredArgsConstructor
 @Slf4j
 @Service
 public class WeatherService {
+    /**
+     * The proxy client for accessing the OpenWeather API.
+     */
     private final OpenWeatherProxyClient openWeatherService;
 
     /**
-     * A tool method that fetches weather information based on the provided location.
+     * Retrieves weather information for a given location by name.
+     * <p>
+     * This method is annotated as a Tool, making it available to AI models
+     * for function calling during conversations.
      *
-     * @param location the name of the city or state to get the weather for.
-     * @return a string representation of the weather (e.g., temperature).
+     * @param location The name of the city or state to get weather for
+     * @return A string representation of the weather (e.g., temperature)
      */
     @Tool(description = "Fetches the weather for a given location")
     public String weather(@ToolParam(description = "City or state name") String location) {
@@ -34,9 +51,21 @@ public class WeatherService {
         return "43°C";  // Example hardcoded response for demonstration purposes.
     }
 
+    /**
+     * Retrieves detailed weather information for a location specified by coordinates.
+     * <p>
+     * This method is annotated as a Tool, making it available to AI models
+     * for function calling during conversations. It returns a more detailed
+     * weather response object with comprehensive weather data.
+     *
+     * @param latitude The latitude coordinate of the location
+     * @param longitude The longitude coordinate of the location
+     * @return A detailed OpenWeatherResponse object with weather information
+     */
     @Tool(description = "Fetches the weather for a given location")
-    public OpenWeatherResponse weatherByLocation(@ToolParam(description = "latitude") double latitude
-            , @ToolParam(description = "longitude") double longitude) {
+    public OpenWeatherResponse weatherByLocation(
+            @ToolParam(description = "latitude") double latitude,
+            @ToolParam(description = "longitude") double longitude) {
         log.info("Requesting weather information for location: {}- {}", latitude, longitude);
         OpenWeatherRequest openWeatherRequest = OpenWeatherRequest.builder()
                 .longitude(longitude)
