@@ -25,9 +25,6 @@ import java.io.Serializable;
  * @param imdb       The IMDB identifier
  * @param imdbRating The rating on IMDB (e.g., 8.5)
  * @param imdbGenre  The genre classification on IMDB
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @Builder
 public record Movie(Integer id, String title, String genre, String director,

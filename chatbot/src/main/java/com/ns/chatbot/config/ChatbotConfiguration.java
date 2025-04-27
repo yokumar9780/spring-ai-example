@@ -22,20 +22,17 @@ import java.util.function.Function;
  *   <li>HTTP clients for external API communication</li>
  *   <li>Service beans for weather information</li>
  * </ul>
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @org.springframework.context.annotation.Configuration
 public class ChatbotConfiguration {
-    
+
     /**
      * Creates a ChatClient with in-memory chat history.
      * <p>
      * This client maintains conversation context across multiple interactions,
      * allowing for more coherent multi-turn conversations.
      *
-     * @param chatClientBuilder The builder for creating chat clients
+     * @param chatClientBuilder  The builder for creating chat clients
      * @param inMemoryChatMemory The memory component for storing chat history
      * @return A ChatClient configured with memory and logging advisors
      */

@@ -25,9 +25,6 @@ import java.net.Proxy;
  * </ul>
  * <p>
  * This configuration is only active in the "dev" profile.
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @Configuration
 @RequiredArgsConstructor

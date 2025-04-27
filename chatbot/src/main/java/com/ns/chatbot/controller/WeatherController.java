@@ -24,9 +24,6 @@ import javax.validation.Valid;
  * <p>
  * It demonstrates the use of Spring AI's tool calling capabilities
  * by delegating weather lookups to the WeatherService.
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @RestController
 @RequiredArgsConstructor
@@ -36,7 +33,7 @@ public class WeatherController {
      * Chat client without memory for stateless weather queries.
      */
     private final ChatClient chatClientWithoutInMemory;
-    
+
     /**
      * Weather service that provides the actual weather data.
      */

@@ -22,9 +22,6 @@ import lombok.NoArgsConstructor;
  * String units = "metric"; // Options: standard, metric, imperial
  * String exclude = "minutely,hourly"; // Optional: Data to exclude
  * </pre>
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @Builder
 @Data
@@ -35,19 +32,19 @@ public class OpenWeatherRequest {
      * The latitude coordinate of the location.
      */
     private double latitude;
-    
+
     /**
      * The longitude coordinate of the location.
      */
     private double longitude;
-    
+
     /**
      * The unit system for measurements (standard, metric, or imperial).
      * Defaults to "metric" (Celsius, meters/sec, etc.).
      */
     @Builder.Default
     private String units = "metric";
-    
+
     /**
      * Data parts to exclude from the response.
      * Defaults to "minutely,hourly" to reduce response size.

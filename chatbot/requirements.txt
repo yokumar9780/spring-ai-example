@@ -1,4 +1,4 @@
-# Spring AI Workshop - Implemented Use Cases
+# Spring AI Example - Implemented Use Cases
 
 ## 1. Conversational AI with Spring AI
 - Integration with Ollama LLM models

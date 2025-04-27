@@ -19,9 +19,6 @@ import lombok.Builder;
  * @param age         The person's age in years
  * @param gender      The person's gender (from the Gender enum)
  * @param nationality The person's nationality or country of origin
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @Builder
 public record Person(Integer id, String firstName, String lastName,

@@ -1,4 +1,4 @@
-# spring-ai-workshop
+# spring-ai-example
 
 The goal of this project is to provide example implementations for various AI use cases using the Spring AI framework.
 This includes demonstrating how to integrate machine learning models, NLP services, and other AI capabilities into
@@ -32,8 +32,8 @@ For Ollama:
 Start by cloning the repository to your local machine:
 
 ```bash
-git clone https://github.com/yokumar9780/spring-ai-workshop
-cd spring-ai-workshop
+git clone https://github.com/yokumar9780/spring-ai-example
+cd spring-ai-example
 ```
 
 ### Build the Project

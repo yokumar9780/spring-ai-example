@@ -14,9 +14,6 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
  * @param port     The port number of the proxy server (defaults to 80)
  * @param username The username for proxy authentication (if required)
  * @param password The password for proxy authentication (if required)
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @ConfigurationProperties(prefix = "proxy")
 public record ProxySettings(

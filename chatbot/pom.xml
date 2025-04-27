@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>com.yk</groupId>
-        <artifactId>spring-ai-workshop</artifactId>
+        <artifactId>spring-ai-example</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>

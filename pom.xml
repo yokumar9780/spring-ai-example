@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yk</groupId>
-    <artifactId>spring-ai-workshop</artifactId>
+    <artifactId>spring-ai-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-ai-workshop</name>
-    <description>Spring AI workshop</description>
+    <name>spring-ai-example</name>
+    <description>Spring AI example</description>
     <packaging>pom</packaging>
     <modules>
         <module>chatbot</module>

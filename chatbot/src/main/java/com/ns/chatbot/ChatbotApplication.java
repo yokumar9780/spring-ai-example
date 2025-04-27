@@ -10,9 +10,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * <p>
  * This class initializes the Spring Boot application and enables
  * configuration properties for proxy settings.
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @SpringBootApplication
 @EnableConfigurationProperties({ProxySettings.class})

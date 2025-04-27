@@ -12,9 +12,6 @@ import javax.validation.constraints.NotNull;
  *
  * @param latitude  The latitude coordinate (required)
  * @param longitude The longitude coordinate (required)
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @Builder
 public record Location(@NotNull double latitude, @NotNull double longitude) {

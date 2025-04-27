@@ -23,30 +23,25 @@ import java.util.function.Function;
  * <p>
  * The client implements the Function interface to support functional programming
  * patterns and can be used with the Spring Cloud Function framework.
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class OpenWeatherProxyClient implements Function<OpenWeatherRequest, OpenWeatherResponse> {
     /**
+     * The RestTemplate used for making HTTP requests to the OpenWeather API.
+     */
+    private final RestTemplate restTemplate;
+    /**
      * The base URL for the OpenWeather API, injected from application properties.
      */
     @Value("${openWeather.url}")
     private String openWeatherUrl;
-
     /**
      * The API key for authenticating with the OpenWeather API, injected from application properties.
      */
     @Value("${openWeather.apiKey}")
     private String openWeatherApiKey;
-
-    /**
-     * The RestTemplate used for making HTTP requests to the OpenWeather API.
-     */
-    private final RestTemplate restTemplate;
 
     /**
      * Applies this function to the given request to retrieve weather data.

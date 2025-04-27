@@ -21,9 +21,6 @@ import org.springframework.stereotype.Service;
  * <p>
  * The @Tool annotations make these methods available to AI models for function calling,
  * allowing the AI to request weather information during conversations.
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @RequiredArgsConstructor
 @Slf4j
@@ -58,7 +55,7 @@ public class WeatherService {
      * for function calling during conversations. It returns a more detailed
      * weather response object with comprehensive weather data.
      *
-     * @param latitude The latitude coordinate of the location
+     * @param latitude  The latitude coordinate of the location
      * @param longitude The longitude coordinate of the location
      * @return A detailed OpenWeatherResponse object with weather information
      */

@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  * This controller provides a simple endpoint for getting
  * AI-generated responses on any topic. It demonstrates
  * basic prompt engineering with Spring AI.
- *
- * @author Spring AI Workshop Team
- * @version 1.0
  */
 @RestController
 @RequiredArgsConstructor
