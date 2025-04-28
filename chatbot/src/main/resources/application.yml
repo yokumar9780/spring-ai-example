@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: chatbot
+
+
+  ai:
+    ollama:
+      chat:
+        model: llama3.2
+      base-url: http://localhost:11434
+
+
+  threads:
+    virtual:
+      enabled: true
+
+
+logging:
+  level:
+    org:
+      springframework:
+        ai: debug
+  file:
+    path: ${user.dir}${file.separator}logs${file.separator}${spring.application.name}
+    name: ${spring.application.name}.log
+  include-application-name: true
+
+openWeather:
+  url: ${OPEN_WEATHER_URL:https://api.openweathermap.org/data/2.5/weather}
+  apiKey: ${OPEN_WEATHER_URL:XXXX}
