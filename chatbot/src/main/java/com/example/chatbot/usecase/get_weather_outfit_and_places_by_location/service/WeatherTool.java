@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 @Service
-public class WeatherService {
+public class WeatherTool {
     private final OpenWeatherProxyClient openWeatherProxyClient;
 
     @Tool(name = "weatherByLocation",

@@ -3,7 +3,7 @@ package com.example.chatbot.usecase.get_weather_outfit_and_places_by_location.co
 
 import com.example.chatbot.usecase.get_weather_outfit_and_places_by_location.model.Location;
 import com.example.chatbot.usecase.get_weather_outfit_and_places_by_location.model.WeatherResponse;
-import com.example.chatbot.usecase.get_weather_outfit_and_places_by_location.service.WeatherService;
+import com.example.chatbot.usecase.get_weather_outfit_and_places_by_location.service.WeatherTool;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -22,7 +22,7 @@ import javax.validation.Valid;
 public class WeatherController {
 
     private final ChatClient chatClient;
-    private final WeatherService weatherService;
+    private final WeatherTool weatherService;
 
     @GetMapping("/weather")
     WeatherResponse getWeatherByLocationUsingOpenWeatherProxy(@RequestBody @Valid Location location) {
