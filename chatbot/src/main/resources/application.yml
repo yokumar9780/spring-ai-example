@@ -10,9 +10,9 @@ spring:
     url: jdbc:postgresql://localhost:5433/ai
     username: dev_user
     password: dev_password
-#  sql:
-#    init:
-#      schema-locations: classpath:init.sql
+  #  sql:
+  #    init:
+  #      schema-locations: classpath:init.sql
   ai:
     vectorstore:
       pgvector:
@@ -20,7 +20,7 @@ spring:
         distance-type: COSINE_DISTANCE
         dimensions: 1024
         #max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
-        remove-existing-vector-store-table: true
+        remove-existing-vector-store-table: false
         initialize-schema: true
     ollama:
       chat:
@@ -33,14 +33,13 @@ spring:
     virtual:
       enabled: true
 
-
-
-
 logging:
   level:
     org:
       springframework:
         ai: info
+    com:
+      example: debug
   file:
     path: ${user.dir}${file.separator}logs${file.separator}${spring.application.name}
     name: ${spring.application.name}.log

@@ -9,22 +9,15 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
-import org.springframework.ai.document.Document;
-import org.springframework.ai.reader.TextReader;
-import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.io.Resource;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
 import java.util.function.Function;
 
 @Configuration
@@ -55,17 +48,6 @@ public class ChatbotConfig {
                 .build();
     }
 
-    @Bean
-    CommandLineRunner ingestTermOfServiceToVectorStore(VectorStore vectorStore,
-                                                       @Value("classpath:rag/terms-of-service.txt") Resource termsOfServiceDocs) {
-
-        // Ingest the document into the vector store
-        return args -> {
-            List<Document> read = new TextReader(termsOfServiceDocs).read();
-            List<Document> transform = new TokenTextSplitter().transform(read);
-            vectorStore.write(transform);
-        };
-    }
 
     @Bean
     @Qualifier("bookingCustomerSupportAssistantChatClient")
