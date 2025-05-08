@@ -11,21 +11,25 @@ This document provides instructions for setting up the local development environ
 ## Steps
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yokumar9780/spring-ai-example.git
    cd spring-ai-example
    ```
 
 2. Start the PostgreSQL database using Docker Compose:
+
    ```bash
    cd dev/docker-compose
    docker-compose up -d
    ```
 
 3. Configure the application:
+
    - Update `src/main/resources/application-dev.yaml` with your proxy and OpenWeather API details if required.
 
 4. Run the application:
+
    ```bash
    ./mvnw spring-boot:run
    ```

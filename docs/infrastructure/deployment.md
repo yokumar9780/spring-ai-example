@@ -9,16 +9,19 @@ The application is designed to run as a Spring Boot application with PostgreSQL 
 ## Deployment Steps
 
 1. Build the application:
+
    ```bash
    ./mvnw clean package
    ```
 
 2. Run the application:
+
    ```bash
    java -jar target/chatbot-0.0.1-SNAPSHOT.jar
    ```
 
 3. Database Setup:
+
    - Ensure the PostgreSQL database is running.
    - Use the `init.sql` script to initialize the database schema and data.
 

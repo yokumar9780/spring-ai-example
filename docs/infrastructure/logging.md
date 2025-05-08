@@ -9,10 +9,12 @@ Logging is configured using Logback to capture application events and errors.
 ## Configuration
 
 1. Logback Configuration:
+
    - The configuration file is located at `src/main/resources/logback-spring.xml`.
    - Logs are stored in the `logs` directory under the project root.
 
 2. Log Levels:
+
    - Default log levels are defined in `application.yml`:
      ```yaml
      logging:

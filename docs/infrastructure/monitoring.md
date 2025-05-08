@@ -14,15 +14,17 @@ Monitoring is essential to ensure the application is running smoothly and to ide
 ## Configuration
 
 1. Enable Actuator endpoints in `application.yml`:
+
    ```yaml
    management:
      endpoints:
        web:
          exposure:
-           include: "*"
+           include: '*'
    ```
 
 2. Access Actuator endpoints:
+
    - Example: `http://localhost:8080/actuator/health`
 
 3. Log Configuration:
