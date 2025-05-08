@@ -1,0 +1,56 @@
+site_name: Spring ai Example Documentation
+nav:
+  - Architecture:
+      - Overview: architecture/overview.md
+      - Component Interaction: architecture/component-interaction.md
+  - Infrastructure:
+      - Deployment: infrastructure/deployment.md
+      - CI/CD: infrastructure/cicd.md
+      - Monitoring: infrastructure/monitoring.md
+      - Logging: infrastructure/logging.md
+      - Cloud Services: infrastructure/cloud-services.md
+  - Setup:
+      - Local Development: setup/local-development.md
+  - Chatbot:
+      - Use Cases:
+          - Airline Booking Customer Support Agent: chatbot/usecase/airline_booking_customer_support_agent.md
+          - Get Weather, Outfit, and Places by Location: chatbot/usecase/get_weather_outfit_and_places_by_location.md
+          - Vehicle Fake Data Generator: chatbot/usecase/vehicle_fake_data_generator.md
+
+# Theme and additional configurations
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.prune
+    - navigation.sections
+  palette:
+    primary: black
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    code: Ubuntu Condensed
+    text: Ubuntu Condensed
+
+extra:
+  version:
+    provider: mike
+    default: stable
+  social:
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:yokum.9780@gmail.com
+      name: yogesh
+
+repo_url: https://github.com/yokumar9780/spring-ai-example
+repo_name: yokumar9780/spring-ai-example
+
+plugins:
+  - search
+  - mike
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-committers:
+      repository: yokumar9780/spring-ai-example
+      branch: master
+  - git-authors
+  - awesome-pages
